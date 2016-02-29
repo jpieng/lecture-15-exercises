@@ -1,5 +1,4 @@
 # Server.r
-setwd('~/Documents/INFO-498F/lecture-15-exercises/exercise-2')
 # Read in data
 library(plotly)
 library(shiny)
@@ -9,5 +8,7 @@ data <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_
 
 shinyServer(function(input, output) {
   # Create a map via your build_map function
-  
+  output$map <- renderPlotly({
+    build_map(data,input$exports)
+  })
 })
